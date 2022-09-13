@@ -1,9 +1,6 @@
 node_modules/
 dist/
 
-# Log files
-*.log
-
 # Package files
 *.jar
 
@@ -11,6 +8,15 @@ dist/
 target/
 dist/
 env/
+
+# Log files
+*.log
+
+# Compiled Java class files
+*.class
+
+# Compiled Python bytecode
+*.py[cod]
 
 # JetBrains IDE
 .idea/
