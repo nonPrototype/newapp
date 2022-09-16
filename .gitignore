@@ -8,6 +8,7 @@ dist/
 target/
 dist/
 env/
+*.sqlite3
 
 # Log files
 *.log
