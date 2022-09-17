@@ -93,6 +93,18 @@ DATABASES = {
     }
 }
 
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dfd8le5ce8mdmn',
+        'USER': 'ymmdmtawxjdawl',
+        'PASSWORD': 'b28344faab1958eb199e871626c3ed7b951275aec9f316fa8aeb95994290f065',
+        'HOST': 'ec2-44-209-158-64.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}'''
+
 SIMPLE_JWT = {
 'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
 'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -104,11 +116,6 @@ SIMPLE_JWT = {
 'USER_ID_FIELD': 'id',
 'USER_ID_CLAIM': 'user_id',
 }
-
-'''
-
-'''
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
