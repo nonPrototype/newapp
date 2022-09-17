@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
+import sqlite3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,11 +55,19 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
+<<<<<<< HEAD
     'DEFAULT_PERMISSIONS_CLASES':(
         'rest_framework.permission.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+=======
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASES': (
+        'rest_framework.permissions.AllowAny'
+>>>>>>> master
     )
 }
 
@@ -97,12 +106,17 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+<<<<<<< HEAD
         'NAME': 'dfd8le5ce8mdmn',
+=======
+        'NAME': '',
+>>>>>>> master
         'USER': 'ymmdmtawxjdawl',
         'PASSWORD': 'b28344faab1958eb199e871626c3ed7b951275aec9f316fa8aeb95994290f065',
         'HOST': 'ec2-44-209-158-64.compute-1.amazonaws.com',
         'PORT': '5432',
     }
+<<<<<<< HEAD
 }'''
 
 SIMPLE_JWT = {
@@ -116,6 +130,23 @@ SIMPLE_JWT = {
 'USER_ID_FIELD': 'id',
 'USER_ID_CLAIM': 'user_id',
 }
+=======
+}
+'''
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id', 
+}
+
+>>>>>>> master
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

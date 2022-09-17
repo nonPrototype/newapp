@@ -1,4 +1,17 @@
 # Django #
+node_modules/
+dist/
+
+# Package files
+*.jar
+
+# Maven
+target/
+dist/
+env/
+*.sqlite3
+
+# Log files
 *.log
 *.pot
 *.pyc
