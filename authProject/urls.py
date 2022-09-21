@@ -15,15 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authApp.login import login
-from authApp.views.users.create import create_user
-from authApp.views.trip.create import create_trip
-from authApp.views.customers.create import create_customers
+#ejemplo creacion API
+
+from authApp.views.person.personViewSet import PersonViewSet
+#ejemplo de banco
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login),
-    path('users/create', create_user),
-    path('trip/create',create_trip),
-    path('customer/create', create_customers),
+    path('person/list', PersonViewSet.as_view({'get':'list'})),
 ]
