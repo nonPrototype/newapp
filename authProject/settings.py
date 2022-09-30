@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-import sqlite3
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,13 +21,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q!tp_667nj5_8cncfr9$^21-ao3qy29(-8_u6a$bqauuvnk3z&'
+SECRET_KEY = 'django-insecure-y9uc0-k!*p*-r5xa3@++n)nr@fe$hc0w#$_8o)0^6lrt+k%amj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1','localhost','e7c3-179-1-128-194.ngrok.io']
+#CORS_ALLOW_ALL_ORIGINS = [True]
+CORS_ALLOWED_ORIGINS = ["http://127.0.0.1:4040",
+'https://e7c3-179-1-128-194.ngrok.io',
+'https://newapp-00.herokuapp.com']
 
 # Application definition
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'authApp',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,16 +55,19 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSIONS_CLASES':(
-        'rest_framework.permission.AllowAny',
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+AUTH_USER_MODEL = 'authApp.User'
 
 ROOT_URLCONF = 'authProject.urls'
 
@@ -86,37 +92,40 @@ WSGI_APPLICATION = 'authProject.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+#sqlite
 
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}'''
+}
 
+#heroku-postgresql
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dd3afiml0cloeh',
-        'USER': 'wpubljpnfdpybp',
-        'PASSWORD': 'f9720e3922c7b3f2387a733010e2b0a39f0d1a94ed794427cab33048e39bd663',
+        'NAME': 'd87e07k3d44s12',
+        'USER': 'visxjqivugwzhm',
+        'PASSWORD': '4d82873bfc08534ddc498515d1917cf7e3b66b2d601491394946fbdf6dd9daac',
         'HOST': 'ec2-23-20-140-229.compute-1.amazonaws.com',
         'PORT': '5432',
     }
-}
+}"""
 
 SIMPLE_JWT = {
-'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-'ROTATE_REFRESH_TOKENS': False,
-'BLACKLIST_AFTER_ROTATION': True,
-'UPDATE_LAST_LOGIN': False,
-'ALGORITHM': 'HS256',
-
-'USER_ID_FIELD': 'id',
-'USER_ID_CLAIM': 'user_id',
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

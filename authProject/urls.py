@@ -15,12 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#ejemplo creacion API
-
+#ejemplo de creacion de API
 from authApp.views.person.personViewSet import PersonViewSet
-#ejemplo de banco
+#Eejemplo de banco
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
+from authApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('person/list', PersonViewSet.as_view({'get':'list'})),
+    path('person/list',PersonViewSet.as_view({'get':'list'})),
+
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
+    path('user/', views.UserCreateView.as_view()),
+    path('user/<int:pk>/', views.UserDetailView.as_view()),
 ]
