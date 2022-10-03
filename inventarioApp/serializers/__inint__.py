@@ -1,0 +1,3 @@
+from .clientSerializer import ClientSerializer
+from .purchaseSerializer import PurchaseSerializer
+from .productSerializer import ProductSerializer
